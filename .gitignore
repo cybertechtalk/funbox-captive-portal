@@ -1,0 +1,6 @@
+.vscode/
+*.bin
+*.elf
+*.map
+.DS_Store
+*.pyc
